@@ -4,6 +4,7 @@ import axios, { post } from 'axios';
 import '../App.css';
 import fileLogo from '../file.png';
 import docxLogo from '../docx.png';
+import ReactLoading from 'react-loading';
 
 class Uploader extends React.Component {
   constructor() {
@@ -15,6 +16,7 @@ class Uploader extends React.Component {
     this.dropzoneComponent =this.dropzoneComponent.bind(this);
     this.componentManager = this.componentManager.bind(this);
     this.cancelUpload = this.cancelUpload.bind(this);
+    this.downloadComponent = this.downloadComponent.bind(this);
   }
 
 
@@ -61,9 +63,9 @@ defaultComponent(){
             </div>);
 }
 dropFileHere(){
-  return (<div style={{"position":"absolute","left":"45%", 'top':'20%'}}>
+  return (<div style={{"position":"absolute","left":"45%", 'top':'20%',"backgroundColor":"blue"}}>
             drop File Here
-  </div>);
+          </div>);
 }
 fileSelectedComponent(){
 
@@ -94,16 +96,27 @@ fileSelectedComponent(){
   uploadFile(e){
     e.preventDefault();
     console.log("aaaaaaaaaaa");
+    this.setState({component:'loading'});
+
         const url = 'http://localhost:8080/UnicodeConverter/webapi/fileupload';
     const formData = new FormData();
     formData.append('file',this.state.files[0])
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
-        }
+        },
+        timeout:1000,
     }
     post(url, formData,config).then((response)=>{
       console.log(response.data);
+      if(response.data.error){
+
+      }
+      else{
+        this.setState({downlad_path : response.data.message});
+        this.setState({component:'download'});
+  
+      }
   
        });
   }
@@ -120,9 +133,33 @@ componentManager(){
   else if(this.state.component === 'submiter'){
     return this.fileSelectedComponent();
   }
+  else if(this.state.component=== 'loading'){
+    return this.loadingComponent();
+  }
+  else if(this.state.component === 'download'){
+    return this.downloadComponent();
+  }
 }
 
+loadingComponent(){
 
+  return(    <div style={{"position":"absolute","left":"35%", 'top':'15%'}}>
+                <p>Converting.. Please wait</p> 
+                <ReactLoading type='balls' color="green"  height={300} width={400} />
+              </div>);
+}
+
+downloadComponent(){
+              return(
+              <div style={{"position":"absolute","left":"35%", 'top':'15%'}}>
+              <a href={this.state.download_path}><img src={fileLogo} className="File-logo" alt="logo" /></a>
+              <button onClick={this.cancelUpload} className='cancel-button'>
+                    Go Back
+              </button>
+              </div>
+              );
+
+}
 
 
   render() {
