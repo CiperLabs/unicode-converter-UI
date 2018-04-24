@@ -94,7 +94,7 @@ fileSelectedComponent(){
   uploadFile(e){
     e.preventDefault();
     console.log("aaaaaaaaaaa");
-        const url = 'http://localhost:8080/UnicodeConverter/fileupload';
+        const url = 'http://localhost:8080/UnicodeConverter/webapi/fileupload';
     const formData = new FormData();
     formData.append('file',this.state.files[0])
     const config = {
