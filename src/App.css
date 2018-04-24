@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 10x0px;
   padding: 20px;
   color: white;
 }
@@ -21,8 +21,42 @@
 .App-intro {
   font-size: large;
 }
+.File-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 120px;
+}
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.upload-button{
+  margin-left: 20px;
+  background-color: blue;
+  font-size: 30px;
+  color:white;
+}
+.cancel-button{
+  background-color: red;
+  font-size: 30px;
+  color:white;
+}
+.rotating-border {
+  /* content: ''; */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border-radius: 50%;
+  border: 2px dashed #000;
+  -webkit-animation-name: Rotate;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: Rotate;
+  -moz-animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: Rotate;
+  -ms-animation-duration: 2s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
 }
