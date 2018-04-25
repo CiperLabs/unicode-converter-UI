@@ -37,6 +37,11 @@
   font-size: 30px;
   color:white;
 }
+.center-comp{
+  position: center;
+  height: 40%;
+  margin: 15px;
+}
 .rotating-border {
   /* content: ''; */
   position: absolute;

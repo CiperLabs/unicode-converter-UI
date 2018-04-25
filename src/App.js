@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Uploader from './components/Uploader.js';
 class App extends Component {
