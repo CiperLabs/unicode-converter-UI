@@ -7,7 +7,8 @@ import docxLogo from '../docx.png';
 import ReactLoading from 'react-loading';
 import errorLogo from '../error.png';
 
-let rootUrl = "http://localhost:8080/UnicodeConverter/webapi/fileupload/";
+let rootUrl = "http://unicodeconverter.projects.mrt.ac.lk:8080/UnicodeConverter/webapi/fileupload/";
+// let rootUrl =  "http://localhost:8080/UnicodeConverter/webapi/fileupload/";
 
 class Uploader extends React.Component {
   constructor() {
@@ -112,7 +113,7 @@ fileSelectedComponent(){
     console.log("aaaaaaaaaaa");
     this.setState({component:'loading'});
 
-        const url = 'http://localhost:8080/UnicodeConverter/webapi/fileupload/docx';
+        const url = rootUrl+'docx';
     const formData = new FormData();
     formData.append('file',this.state.files[0])
     const config = {
@@ -125,7 +126,7 @@ fileSelectedComponent(){
     post(url, formData,config).then((response)=>{
       console.log(response.data);
       if(response.data.error){
-          this.setState({component : 'error', error : this.data.error})
+          this.setState({component : 'error', error : response.data.message})
       }
       else{
         this.setState({download_path : rootUrl+response.data.message});
