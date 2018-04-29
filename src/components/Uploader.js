@@ -121,11 +121,15 @@ fileSelectedComponent(){
             'Access-Control-Allow-Origin':'*',
             'content-type': 'multipart/form-data'
         },
-        timeout:100000,
+        timeout:1000000,
     }
-    post(url, formData,config).then((response)=>{
+    post(url, formData,config).then((response,err)=>{
       console.log(response.data);
-      if(response.data.error){
+      if(err){
+          this.setState({component : 'error', error : "File Too large"})
+
+      }
+      else if(response.data.error){
           this.setState({component : 'error', error : response.data.message})
       }
       else{
