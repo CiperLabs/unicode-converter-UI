@@ -7,8 +7,10 @@ import docxLogo from '../docx.png';
 import ReactLoading from 'react-loading';
 import errorLogo from '../error.png';
 
-let rootUrl = "http://unicodeconverter.projects.mrt.ac.lk:8080/UnicodeConverter/webapi/fileupload/";
-// let rootUrl =  "http://localhost:8080/UnicodeConverter/webapi/fileupload/";
+import { API_ROOT } from '../api-config';
+
+// let rootUrl = "http://unicodeconverter.projects.mrt.ac.lk:8080/UnicodeConverter/webapi/fileupload/";
+let rootUrl =  API_ROOT+"/webapi/fileupload/";
 
 class Uploader extends React.Component {
   constructor() {

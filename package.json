@@ -9,6 +9,7 @@
     "morgan": "^1.9.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-dropzone": "^4.2.11",
     "react-loading": "^2.0.2"
   },
   "devDependencies": {
